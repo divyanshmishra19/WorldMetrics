@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+<!-- This page is constructed based on the siteTemplate -->
+<ui:composition template="/template/siteTemplate.xhtml">
+    <ui:define name="title">
+        <!-- Set the page title -->
+        <h:outputText value="GDP" />
+
+    </ui:define>
+    <!-- Create the content for this page below -->
+    <ui:define name="editableContent">
+        <!-- In case of JSF validation error, set 'selected' to null in recipeController -->
+        <c:if test="#{facesContext.validationFailed}">
+            ${metricsController.unselect()}
+        </c:if>
+        <!-- Set 'selected' to null in recipeController when the user refreshes / reloads this JSF page -->
+        <f:metadata>
+            <f:viewAction action="#{metricsController.unselect()}" rendered="#{facesContext.postback}" />
+        </f:metadata>
+        <div align="center" style="text-align: center;">
+            <h:form id="MetricsForm">
+                <p:panel header="#{metricsController.metricName}">
+                    <p:dataTable id="datalist"
+                                 value="#{metricsController.metricRows}"
+                                 var="aMetric"
+                                 widgetVar="metricDataTable"
+                                 selectionMode="single"
+                                 selection="#{metricsController.selected}"
+                                 reflow="true"
+                                 showGridlines="true"
+                                 paginator="true"
+                                 rowKey="#{metricController.id}"
+                                 rows="5"
+                                 rowsPerPageTemplate="5,10,20,30,50,70,90"
+                                 emptyMessage="No data found for the search query entered!">
+                        <p:ajax event="rowSelect"   update="viewButton visualizeButton "/>
+                        <p:ajax event="rowUnselect" update="viewButton visualizeButton "/>
+                        <!--
+                        *************************
+                        *   Data Table Header   *
+                        *************************
+                        -->
+                        <f:facet name="header">
+                            <div align="center">
+                                <p:inputText id="globalFilter" onkeyup="PF('metricDataTable').filter()" filterMatchMode="contains"
+                                             style="width: 250px"
+                                             placeholder="Enter Global Search Query" />
+                                &nbsp;
+                                <p:commandButton type="button" value="Clear All Filters" styleClass="ui-button-outlined"
+                                                 icon="fas fa-undo" onclick="PF('metricDataTable').clearFilters()" />
+                            </div>
+                        </f:facet>
+
+
+                        <p:column headerText="Country"
+                                  filterBy="#{aMetric.countryName}" filterMatchMode="contains"
+                                  style="vertical-align: top;text-align: center">
+                            <h:outputText value="#{aMetric.countryName}"/>
+                        </p:column>
+
+                        <p:column headerText="Value" sortBy="#{aMetric.metricValue}"
+                                  style="vertical-align: top;text-align: center">
+                            <h:outputText value="#{aMetric.metricValue}">
+                                <f:convertNumber type="number" groupingUsed="true"/>
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Year" sortBy="#{aMetric.year}"
+                                  style="vertical-align: top;text-align: center">
+                            <h:outputText value="#{aMetric.year}">
+                                <f:convertNumber type="number" groupingUsed="true" />
+                            </h:outputText>
+                        </p:column>
+
+                        <!--
+                        *************************
+                        *   Data Table Footer   *
+                        *************************
+                        -->
+                        <f:facet name="footer">
+                            <div align="center">
+                                <!-- VIEW button: id is used since it is referenced to be activated or deactivated -->
+                                <p:commandButton id="viewButton" value="View" icon="fas fa-eye" styleClass="rounded-button"
+                                                 update=":MetricViewDlg" oncomplete="PF('MetricViewDialog').show()"
+                                                 disabled="#{empty metricsController.selected}"/>
+                                &nbsp;
+                                <p:commandButton id="visualizeButton" value="Visualize" icon="fa-chart-line" styleClass="rounded-button"
+                                                 action="#{graphController.showGraph}" />
+                            </div>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+        </div>
+        <!-- Clicking the View button displays the included View.xhtml file in a dialog box on top of this page. -->
+        <ui:include src="/metrics/View.xhtml"/>
+
+    </ui:define>
+</ui:composition>
+</html>

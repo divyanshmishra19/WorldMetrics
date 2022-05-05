@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition>
+    <!--
+    ********************************************
+    Dialog pop-up window to VIEW a public Recipe
+    ********************************************
+    -->
+    <p:dialog id="MetricViewDlg" header="View Details" widgetVar="MetricViewDialog"
+              modal="true" position="center" appendTo="@(body)"
+              showEffect="slide" hideEffect="fade" responsive="true" width="50%" height="400">
+
+        <h:form id="MetricViewForm" class="ui-datatable-data">
+            <!-- Display the selected car's logo image -->
+            <div style="border: darkgray 1px solid; padding-bottom: 10px">
+                <div align="center">
+                    <p style="display: block; font-size: 18px; font-family: Arial; margin-bottom: -3px">
+                        <i>Nation's Flag:</i></p>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAmVBMVEX/mTMSiAf/////kAsAfQAAAIgAAIUAAH4AAIIAAH0AAHby8vju7vbn5/IrK5P6+v3h4e6mpszExN2Njb56erScnMaFhboAAHO+vtra2urv7/esrNEnJ5LLy+E6OplkZKpKSp+ystVpaazb2+xRUaRERJtYWKSSksGBgbeJibu8vNwNDYuhockhIZA/P55WVqUYGI4xMZUcHI8jqFxWAAAFFElEQVR4nO2ba3eqOBSGO5lJCGC4qSAi3iiKtqfW+f8/bnbA02ndZ50184V0Ld+nC0Tkw+bpDjuE8PQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8D/5E9zzJMA9cMKBEw6ccOCEAyec7+Bksjju19GPaL0/LiaugxHfwMlkHnlaK6UkLVp70dy5FsdOyo2vrQ2pPM8bNrS/Kd0G5dTJcuMrKbU+zPytSczWnx20llL5m6XLsFw6SW1maP0qQpGFohFhRltzbRPHSx3G5dDJwaOMmKXrUNT269muahGu0xllj3dwF5gzJ3GkpWrL2G7v7Kr62IrLVkkdxa5Cc+UkfqHT9l5FZr9kCa2mtCTDV/HqkbCX0FFsrpxE1DyqbiJimx7hkVa2sRythioWkzylhvXDUWyOnBy09Bb9VmpotaXl7fZphsvrgqQ8uwnOjZO5lroa2o240LIhMZQVZkPbg4hMVHTM3El0TpwYW3Ho+mGbjEip9aR08opUUYqkfZrQLyeq1J5xEZ4TJ89KtX0Xfm9riwpFuRKxF4tVKUJSI+K9sJ3+rXLTelw4qT3pJf1WTJ0TsaOrSDCJg3gSCNFSNQ7XQxlO6LjaQXwunFCa5PFwshNJrUOfRZSGRfgaiTOliZHDXWAd524SxYET+vdryoaq76Qlfil2vuhaE5i2E/5OlH6fQ/bnnf6ZUKPiwMmUCkpfdC+211oXCyH3WZDQX7aXYlHYDNpd+hJNR07HD9CBk3eqsUMXNZXUR1kUVV0Yr9GNZ4q6KuwuOfRRQqrZL+MHOL4TW4h/boctWamKbJafsmt26mZZUZGR7Uev3kk5Ht/JTqtNWO+y4bwX/nuZBWbVVLOqWZkgK9/9/g5ZxPWuDjdK70aPcHwnJ61y+kiOz/vKDqjti9xck65t2y65mrzY076y2j9P7Y+50qfRIxzfyUHJYCjEZh4F61O9PF3Nsx2R1c/melrW+TpYzYcWUwdSbUaPcHwnEXU6Pq4Xy7QNvGlz1NKij83UC9r0Y5Q6pK5MNHqE4zt5kd6HkjiOJ6apq1b1TlRb1Y0xtPfnAaHnoPCM70RSKWnOu+nmLZI6KIJAr/NW3pzkax3QPk/9WF+69NxQkZKjR+g+T5Jmkb7d8uQtXTTJ5zxZPkaerO6vJ3qa5LfrSZ5M9SNeT1jdMbMoudWdJJqZ+vS17ow/gO+gf6Lu+ydd8neSr9t1Tp/dQ/ZPvvZjz/57vSjMqqR+bLkyxaJ+xH4su99Ji6y73e90WZE+4v0OFR7cF9+D8RMOxtl+wVap06/GY9NInPXdeOzWQXxux+1DO25ffR633+5ue8VjjdvbRPkvz3faB3q+05dj7/TpOeDrv88Bqwd9Dvjb58WXfu/DPS+2j70wr4Cx+s38E7qWdJWdf+JophLmKXEwn43jet5jh3mPX7jNj51jfuwnJodhHvXlYx71ZZhHfXA65x7z7Tnf4L2M65f3Mq4P/15Gz/LT+ztOXz648R2cfDfghAMnHDjhwAkHTjhPf4F7nv4A98AJB044cMKBEw6ccOCEAyccOOHACQdOOHDCgRMOnHDghAMnHDjhwAkHTjhwwoETDpxw4IQDJxw44cAJB044cMKBEw6ccOCEAyccOOHACQdOOHDCgRMOnHDghAMnHDjhwAkHTjhwwoETDpxw4IQDJxw44cAJB044cMKBEw6ccOCEAyccOOHACQdOOHDC+QeZkSJidGtG9wAAAABJRU5ErkJggg=="
+                         style="height:55%; width:65%; padding-left:10px; border:none;"
+                         alt="Flag Photo"/>
+                </div>
+
+
+                <!--Country Name-->
+                <div align="center">
+                    <p style="display: block; font-size: 18px; font-family: Arial; margin-bottom: -3px">
+                        <i>Nation's Name:</i></p>
+                    <p:outputLabel value="India"
+                                   style="color: black; font-family: Arial"/>
+                </div>
+
+
+                <!--Recipe Category-->
+                <div align="center">
+                    <p style="display: block; font-size: 18px; font-family: Arial; margin-bottom: -3px">
+                        <i>Details:</i></p>
+                    <p:outputLabel
+                            value="India, officially the Republic of India (Hindi: Bhārat Gaṇarājya),[24] is a country in South Asia. It is the seventh-largest country by area, the second-most populous country, and the most populous democracy in the world."
+                            style="color: black; font-family: Arial"/>
+                </div>
+
+                <div align="center">
+                    <p style="display: block; font-size: 18px; font-family: Arial; margin-bottom: -3px">
+                        <i>Nation's Metric Trend</i></p>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQUAAADBCAMAAADxRlW1AAAA3lBMVEX19fX6+voodt329vby8vLa2tro6Oju7u7///wod+D49/Xs7Oz8/PwAbNv///8fc9zq8PgAUKH+/PZrm+VKhuDFxcW1yeyowerT09Pt8PQAbNxUjeHBwcEXcNzLy8u7u7ucuevS3fAxet7H1/GOrud7pOXa5PGysrLg4OBiYmKsrKy+0O2fn590dHRPT09ISEiIiIhqamqWlpYAAABbW1t6eno7OzsrKysjIyM0NDQAS6AoKCgSEhKNjY1BQUEAZNoZGRltm+OBkayPm7Bthatzh6tGbaYrXaOepbBUdaf9KLQnAAAR40lEQVR4nO2dDWPbptaAYYeP3IiqXTY22qmwrXcDa7JsuXLa3DXZ7vd9//8fekH+QrLsOk3itLFOHFs+OsDRY0AIBEJoEGCP7cHnIAOFIAOFIAOFIL0UABYfCFbfYb2rN5KPagBaO2GhAeiLb2/YaC+0lOtXv4u7HF3qeygA542PDLHGAyDO4cZl8JrlxvIgYBHHRhdeApYB11rCw6enKUL0mGJgzFs5zBszaCybd4ESWKr8dhMdh2Vg/w0TjBEG/ya438CNhVcK/+ICex0QAhsnYelTEzdJYBHiEAo4nyHmI73k09QJjLG9mZdpgjDn5CrFjBDOBRM4IV7jXSFX/igxZ5j5g8OYpddylvptRJgIlhiTvCD+6AhHIyGm9Gp66d6OJ/jt9D2bC3+YPmLsd3tWZMRqjv0mYohXaeJRTKSPPcTkncJyMnE3N6QYp6MqE9amHiZclroq5Xh0bUZzkY6wjw0lgifeIe8Cdj46EnR6nMoiZbDFoZ/C9PequB5/4PV0Ho7Iju1YVSUd3dBJKst38kNRj6dqMnKXlRPz8Z+0nLi3VXmj6kqWc1tej/OqTOmHka1Hxbh0k4mtWEknpfnAxCjPiVV1OlJX7D1UBE/G1bTMRzdmdpWV7+W7UZHmV8X4Ur434xIlH8yHvBwX8+rd6FooVBe2kNkY3k1ZOp57PwRXdlbzseZ1NTeCXtPyxt3U+nJ8WRZ/jnI7L7Pfi6p0N6NpOhvl1Q3ZKnT9FCo2v0yvknI2rVKB7TifF9U8m5d6kk7dTJbpxO8d125eU/F7ellIXdy4aVFcXudFbaf+d/G5gla4qvFNOp5mNh8ndZFjPknJ2M7YZVanpXs/k+mcsRFUUzdOZnIynsgJH9F5Wlg1v3LV9Xzs0gkbkSqdzNmEVQIqbexMJxUp6TTN8zq9EiKfipKPXS1Kn1dlXkhkCzcteWWmlaiz6ZUp8mo+m/mIs2IkpuogCvZ67Kaz0e+8rqeV9nmhQBM6qnRZyjrV9aV/H1Uznzv0qFbpdPTOTfzvTa+LbOTzjE9uOjf1KHXv62xEitHI3UxsUV/5LMHeOVGLSV3KPydzfJnidERwPR5PqawneCTfo9JUyh+etaNL9j6rKiRKVqX1KJ+70nk8v9d0ckOYLxGlFmZcjWYieVubwK+c2nou3NSVEzYplQ9nrt/VZja+NIWrK3ZTT733pi63K+C+cwQWAoQgKfgyJ0JthP0H8ZVQigWW85qlKFRFBGHkS5s39HUAFsE0VF6J3+PrKQF0DEHLm++YN1YEiRkNqjSkgcBdCxhPZ2mo4XwEqa9MBBYoxJR6lVf6uraJpPlAPhxe1LJ+n6+p/A4EXhcqyDSkisTY14PNd38MroImplAp4iYUFyHOQygsd219bTS+dlyej9bniC2rxYswiAIu/ptqPgpBQqXOxHZyi2C9Z2jYfGwsYKMjG6caFyCOoP/kfPtW03YVu9PyviO8vRwW9XHbjiFn9ih3GT+sM5EclYLIZe4rGwHLmsfXMgJSq9OmzDc7Qu3iS7nfl+rsaBiOSQHY22lZ8uuRw2rka/C5HakxjK0e12yMK6iqBNfpWI98a+Jaj7KROJ5nx0rJS1pms6K4mk5TOVXXl/z9rC6K62Je0OlEXPGbKRPzoihn79TsnZmm9ROlcFMUMzvJMyEnU3slJjZP3rrZrL7OJ/mfbFb6lt9bXuWzefGnmaXl06QASjHGnQGczTNBIbHEX1gxojLhMiek9NchlymySZI5xvwlxtEcO+o5IrRcAHwTwelwvei/Npd9izZNOCngzEEwCi/KH/AM2vHrcXpZYFf1H7XrHrIZ0ZGhrynIQCHIQCHIQCHIQCHIQCHIDgoARzxPPb70UyAJo5SQlc2qawI2mz0xdWx2GULHZm+E28a9yX7EJoqubbyXAiRKqUwvKHCe8IQkvJGk+eOcNH+bDf+22LGxad5im2gjtlmEChFENmEzIZFNY5V0bbrJLkN1bZaJbtnwvRQQVk4SanHrR4ko+uv/LenLC312fT9Ljxnuyws77LYi7HXvtnkh1AuhJd+ftVDTZ7QlR7CDO9jtreY+7RwxUHiAoxso3MZuoNA4O1BAA4WlswMFNFBYOjtQQAOFpbMDBTRQWDo7UEADhaWzAwU0UFg6eyoUxMlTaPrjUiFOmkJqTGq01ir9TCg0dxnsCfcwFHSBqaFaN3egPz4FYEppo9rjEQCb3ttwD1rUDbzug+52B+O1BV4ZYoS2uoybPmhPQTJlhMewpw+63auNO33QKx9F1yrqg4Yowr0UEFZKOa0bziQaNVh36RNO1rLYRP3jES2b5qNvPCKoEYeA3ce0tN2MLKzTRhyRlvBmuCQaKFmE6trEyW4+do9HLG+kTRLGiVvfaruexQHwYHmhbzwCFAHtaMJwAkfMC8AW5QygZYUIxUgJihhqisn91wviRUsWdsCshllC8zxb3Nt8pHoBa9lnjqVNKJtJmWvxMBTOvvnj1Ub+eLHIM0pJxE2WEG2beUTHomCzfgra8Uy7jGVGPBCF519t5NmCAiKSMemk4kQeNS8o3Rut89W3ZJmvLZr9x6KAmpv+/BvCu47uQSiY3ryAYOXOYvDySBTOW3I8CqCSnmih685xKJz/Fsub8yNSMHR7Ps2L395s5Ldfz49E4eKPZxt59e3FEduOPfcen38Xu/PH9ysKzYyGfVc/d6XwLFI9PyIFcHrb/Py715E7r1cUhDOMG2MpbNr9TZMkTH2FB6MglthX+B+AAjZq22YHhTTTNLFaSb2mgDOZWqWtvzC8ZbviFnnB0LRwqsgU3dDHzelkNW97YSfWb7fOC7Sn1bQrLzDvSKacMxsKhUmVTXPn2xfwMBSEszqVhjsqFRLL+IQmWHPNKWbrdoUI0xfD9OsUNhSaaZHhW9uNrdrx8BIRJjCGl9j0B2BpmMqkwVTfsl1xeF4A41tvWqfYWbekACpjPClCSxuvKAhuXVoQY3LJxIoCGCWszjJJ2+eArRb0LSj0HN1qe0XlASg0F0hhHmnz1sSHdWKQhcwKnfNlS1tQmaWKyCLRWcgVDR2Wa1DSWpWtuw36KBDd03bsp/AyFlgcHcTyQBT64gOZOO20v/TWm5Z2RpnzbygxXKzzgmRGGiNo3soMWxTYYXnh7E3rZP7j2aLdH0f1MBRaJGCdB3ta2mnTdbPMOO2TVndi59Z1hDksL5y9iV183VC4+OurBZTX/u/ZHz/dpnV1KIWz5xH8Z8/PQnznF7EsW9pnsYhbnimz7abjLSjEdq8ehsLPke6rnwOF8xd//2Ujf/++aWnDm1h+EoECtGhd7KNw4Jny4xSeHY3Cr6+eb+TZL8FOvGgV2G/Owjy1l686LfLdFNyXSCG2W1JohV1SiJN4/sMeCutzRATjrhSa7sHm7ZEpxO7tpSBXmSEh6xr/IApiJwWRCHApx4TsGmfwbcD7pSC2KIjbUECrE6szUibNJiFbFAiC8w6Fc3+Q5x0KhIQGBGZFmkk+01al4TvpEYCLDgXw6V60ju7bc0IwumhTuPDJkg4FbwfnHQoXIdkuhfUEkO28sGg7AqOUGrKLAtmmAP0U/O+Xz0TmioJTqUO+7KWADqMAWxTg0ymc76agVuvXOExWuw4rEbCrRKTMMZky/0HFHUuEOEqJACZXFKLxiDvXjutxmS+kdmxyZ1fuREG0GnFfBAVg991qEr+2+ixffAkUQu14l+uIbQpnP7b6LN+cfREUzD3nhbMfW7ovhMLhV9ZPmUJmBwr3f035ZVLoG609PQqy59L69CjoA0dlnjaF++tx+5Ip6IHCLUZlnjQFUFsrw54mhW0fT48CHeqFcNPrPfcvfJEUsB1a0F5WtWNzV9+JUoBkeb8jMK3ocjlnLL579peNvP7+DIs0ffMq1v2Ypt7Dv76OdK9+EsHux5buTZr2jVelafpNy+5FGGc+i5P4y7dnjd3Pse6rNNj92nLll8a9Fy3dN43dyziJ5z+cbUZwd9z16c8VdNGYBmXtP/729Ub+9m/rxfyzpfuXCcp/tXT/a+z+3dL9s7GzJhK70Pzn69guD2oTB/36v0FjzdctaYL/r5XE/zXR5S3df5pU8lbQ/xq7bhXsaDsCV5gtFmwinekGYapB2NG6ERQQ4v120Llh1Nud//A6kmcvCe9Gd94kyz+a7PmB7u2Jr48CsGVfU7hdbDViuSX96zUdaIfg4oe4Dnj9ctf8iG05zG7Hek09/u0qEX3thW05fCy6z65N4flLODS+I931Ccz0jNyfHoW+/oVToxB6WYa8EHpfew/nxChINVAIvSwHQHjyFKQb8oJvQdtDVmd/6hR0303xp0YBePJxBk+dQng+3kABDjtFPHUKzgxtRwSK984wPjUK/fOsT4yCU8N1hK8d0XBl7ZsLerMMyclSiJ5WzMm28alQWKs3MwMensKd4uvz8b5WrUroZmYAXz3UYCNhBsmmS7vZRLHN4vkGCd9YoLVh6IlvU1h0kcc2y47ybrK8u1KRD8M7Ns3TFUjXihDSslkdxl4KvmREMwOWC/usvoTfZDUFaPkXXhHsddWCxep++I15X4lY2UTGuJ3sIkLRtlmsVNTxvFmpCHcSXbsHK5sD8sLCfHcmut8S8dnWCx+RgcJAYaAwUBgoDBSOQeH1qVL49ll0F8erE6UA5GXUvn15eHxPigLauqPkJCmEqzWOHXYJwrdZO/SpUeDSOWULN1O3ie9pUQCFMgEZYybJshMuEchxldHMOX7CFJoK8vZrhz45Cp9kN1BonB0ooMegsPcZxqdBAQjhDHaPSPSkIvqSOZSCOMwOPt2u171NgF1PTlBmeWtP0yveue2cQDyxaNGv2zVp+sDXFpu+31VHe9cOOnOVPprsIsx2ojx6BDVa96D3ube3Jx4Y9xT4cnm/3uBPRPbnhYYwHHK329OQfeeI9tKozddOhmxGLeBjdrBLB9tJQF8KfWbtZNcPhujqUI/dLUZlOkISSDDB7fVKGGaYJC4ezyQJ8nYQ20Eo3v7aMTaD8LzxED7WNUNrHJNOUG+YxDoGCWoeZgLbQTt23pKx2I6JkCbvrsd0IAUsjTHOqiw6FCwzm7mcSAodO6NtdHjgzQyVJotdDDof3sSlzn810tIMx2ZeFVZq3Uxx4tqYTFpt4jQWQZN8s2QAMG2zTJrc5WufgapCG2WtKtqHdyAFoFpSJrN44gA4KRmVIvI6pCMVlzpeywJrHxhrlUcEw/MxlFe7rh1VOLqbZqlyOjrdgwxp0MSKVlAlKc3zuFkgVViW2kV2QDIJmaTGdNaBPzQvGOl/I8raecHrgKJ4jhE2WklMaRb9xsQqpT2e+I4p8Ha6CY9iOx3Oz7Qd1KsyuclGwHy+Uka1FpZaBsWt38jbUduyA5W5TIXwn1gvNMtpdx5CtdC1a5p+uzCns70c92L93o4uXGbiVnwLVatpBD26vqALu7YnfbpG/0nXEU9NBgpBBgpBBgpBBgpBBgpBBgpBBgpBBgpBBgpBBgpBBgpBBgpBYgr7++xvJ3jVL7ZMpvXs071jHY8hMQVDxfLhNXf2EksiqHA0cYvhAMqYALUaJmAspPEZodhQgKRQ1lCb5zrvWQ75diJmOpvqa1noXBUyyzJn88zHXOSFtLoo/L87aO2T40hEwckiz/NrafPpXSmAtoWd+X+bW6vzaZG5goY1k6SU+dTasc1p38rTjyVRiYAEOCQYJ3j3JJmDBUMY0MAcM1/IOGl6zsO2f08I92l8PghQu14ggHjS01v/aREDkGXZJ0kY51kMGCwXVNoaeHhciUoEt8zK+ymswKhihqkkQcporRLCtNKMGs6cQlQrpfoe9fZoEteORmp9D4WhiVVTo1RGkaeQSUdQGP8FrWmiqKPOQ+AHTeg+ksQlgm+P2XxqtGFIyRHHGISJWpBw7ojfdj4RB8wl3CX7ZioeWyIKmBFgvixj0qztSHy5vst4LSzHCAE2DShAUeXwGUl8pvRF1TipNKU++4YHbSrtPqfS+3DSai9oUFoaqfxZ3XogSmfwOZXeh5O4vcCbsd+EhHmZzbAw4o/o2TElrh0XtwrA+l6A+2k4fAkyXFkHGSgEGSgEGSgEGSgEGSgEGSgE8RR61l0+NcEJooNQ9f8hyGDgnohqrgAAAABJRU5ErkJggg=="
+                         style="height:55%; width:65%; padding-left:10px; border:none;"
+                         alt="Flag Photo"/>
+                </div>
+
+                <!--Panel Group for Button-->
+                <h:panelGroup>
+                    <br/>
+                    <div align="center">
+                        <!-- CLOSE button -->
+                        <p:commandButton value="Close" icon="fas fa-window-close" styleClass="ui-button-outlined"
+                                         onclick="PF('MetricViewDialog').hide()"/>
+                    </div>
+                </h:panelGroup>
+            </div>
+        </h:form>
+    </p:dialog>
+</ui:composition>
+</html>

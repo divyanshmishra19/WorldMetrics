@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  - Created by Team 10 on 2021.12.08
+  - Copyright © 2021 Team 10. All rights reserved.
+  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition>
+    <!--
+    ********************************************
+    Dialog pop-up window to inform User to LogIn
+    ********************************************
+    -->
+    <p:dialog id="LogInDlg" header="Please Log-In To Use This Feature" widgetVar="LogInDialog"
+              modal="true" position="center" appendTo="@(body)"
+              showEffect="slide" hideEffect="fade" responsive="true" width="40%" height="150px">
+
+        <h:form id="LogInForm" class="ui-datatable-data">
+            <div align="center">
+                <div align="center">
+                    <p>
+                        Certain features on this website require you to create an account or log into an existing account.
+                        The cost to sign-up is $0 (yes it is free!)
+                    </p>
+                </div>
+                <div align="center">
+                    <p:button id="LogInButton" value="Log-In" icon="pi pi-fw pi-sign-in"
+                                     styleClass="ui-button-info" outcome="/SignIn.xhtml">
+                    </p:button>
+                    &nbsp; &nbsp;
+                    <p:commandButton value="Close" icon="fas fa-window-close" styleClass="ui-button-outlined"
+                                     onclick="PF('LogInDialog').hide()"/>
+                </div>
+            </div>
+        </h:form>
+    </p:dialog>
+
+</ui:composition>
+</html>
