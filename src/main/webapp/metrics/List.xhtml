@@ -29,10 +29,10 @@
         <div align="center" style="text-align: center;">
             <h:form id="MetricsForm">
                 <p:panel header="#{metricsController.metricRows.metricName}">
-                    <p>#{metricsController.metricRows.metricDetail}</p>
-                    <p>Source: #{metricsController.metricRows.metricSource}</p>
+                    <p>#{metricsController.metricResponse.metricDetail}</p>
+                    <p>Source: #{metricsController.metricResponse.metricSource}</p>
                     <p:dataTable id="datalist"
-                                 value="#{metricsController.metricRows.countryData}"
+                                 value="#{metricsController.metricResponse.countryData}"
                                  var="aMetric"
                                  widgetVar="metricDataTable"
                                  selectionMode="single"

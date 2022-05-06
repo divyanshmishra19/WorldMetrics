@@ -11,13 +11,13 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 
-@Named("metricsController")
+@Named("customMetricController")
 @SessionScoped
 public class CustomMetricController implements Serializable {
     private static APICallHandler apiCallHandler;
 
-    public CustomMetricResponse response;
-    public CustomMetricQuiz quiz;
+    private CustomMetricResponse response;
+    private CustomMetricQuiz quiz;
 
     static {
         apiCallHandler = new APICallHandler();

@@ -40,8 +40,6 @@ public class GraphController implements Serializable {
                 new SelectItem("Metric9", "Metric9")
         });
 
-
-
         metrics.add(economicMetrics);
         metrics.add(socialMetrics);
         metrics.add(healthMetrics);

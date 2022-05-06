@@ -29,13 +29,13 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" columnClasses="panelGridColumn1, panelGridColumn2">
                         <h:outputLabel for="Countries" value="Enter Country Names"/>
-                        <p:inputTextarea id="Countries" placeholder="Search" rows="2" cols="150"/>
+                        <p:inputTextarea id="Countries" placeholder="Search" rows="2" cols="150" value="#{customComparatorController.countryList}"/>
 
                         <h:outputLabel for="metricsCheckBox" value="Choose Your Metrics"/>
-                        <p:selectManyCheckbox id="metricsCheckBox" value="#{graphController.selectedMetrics}"
+                        <p:selectManyCheckbox id="metricsCheckBox" value="#{customComparatorController.selectedMetrics}"
                                               layout="responsive"
                                               columns="3">
-                            <f:selectItems value="#{graphController.metrics}" var="metric"
+                            <f:selectItems value="#{customComparatorController.metrics}" var="metric"
                                            itemLabel="#{metric}"
                                            itemValue="#{metric}"/>
                         </p:selectManyCheckbox>
@@ -46,11 +46,11 @@
                     <br /><br />
                     <div align="center">
                         <p:commandButton value="Show Graphs" icon="fas fa-save" styleClass="ui-button-outlined"
-                                         ajax="false" action="#{graphController.renderGraphs()}"
+                                         ajax="false" action="#{customComparatorController.getComparativeCharts()}"
                                          update="display,:CompareMetricsForm:datalist,:growlInfoMessage,:growlWarningMessage,:growlErrorMessage,:growlFatalMessage"/>
                         &nbsp;
                         <p:commandButton value="Cancel" icon="fas fa-ban" styleClass="ui-button-outlined"
-                                         action="#{graphController.cancel()}" ajax="false" immediate="true"/>
+                                         action="#{customComparatorController.cancel()}" ajax="false" immediate="true"/>
                     </div>
                 </h:panelGroup>
             </h:form>

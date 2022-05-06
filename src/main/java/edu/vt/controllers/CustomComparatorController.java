@@ -6,31 +6,60 @@ import edu.vt.globals.Constants;
 import edu.vt.globals.Methods;
 import edu.vt.responses.CustomComparatorResponse;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.model.SelectItem;
+import javax.faces.model.SelectItemGroup;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-@Named("metricsController")
+@Named("customComparatorController")
 @SessionScoped
 public class CustomComparatorController implements Serializable {
 
     private static APICallHandler apiCallHandler;
 
     private CustomComparatorResponse response;
-    private List<String> countryList;
-    private List<String> metricList;
+    private String countryListStr;
+    private List<SelectItem> metrics;
+    private String[] selectedMetrics;
+
+    @PostConstruct
+    public void init() {
+        metrics = new ArrayList<>();
+        SelectItemGroup economicMetrics = new SelectItemGroup("Economic Metrics");
+        economicMetrics.setSelectItems(new SelectItem[]{
+                new SelectItem("GDP", "GDP"),
+                new SelectItem("Metric1", "Metric1"),
+                new SelectItem("Metric2", "Metric2")
+        });
+
+        SelectItemGroup socialMetrics = new SelectItemGroup("Social Metrics");
+        socialMetrics.setSelectItems(new SelectItem[]{
+                new SelectItem("Metric3", "Metric3"),
+                new SelectItem("Metric4", "Metric4"),
+                new SelectItem("Metric5", "Metric5")
+        });
+
+        SelectItemGroup healthMetrics = new SelectItemGroup("Health Metrics");
+        healthMetrics.setSelectItems(new SelectItem[]{
+                new SelectItem("Metric7", "Metric7"),
+                new SelectItem("Metric8", "Metric8"),
+                new SelectItem("Metric9", "Metric9")
+        });
+
+        metrics.add(economicMetrics);
+        metrics.add(socialMetrics);
+        metrics.add(healthMetrics);
+    }
 
     static {
         apiCallHandler = new APICallHandler();
     }
 
-    public CustomComparatorResponse getComparativeCharts() {
-        Map<String, List<String>> comparativeChartPayload = new HashMap<>();
-        comparativeChartPayload.put("countryList", countryList);
-        comparativeChartPayload.put("metricList", metricList);
+    public String getComparativeCharts() {
+        Map<String, List<String>> comparativeChartPayload = getPayoadFromInput();
 
         try {
             String responseString = apiCallHandler.getResponseFromServer(Constants.GET_COMPARATIVE_CHARTS, comparativeChartPayload);
@@ -38,9 +67,25 @@ public class CustomComparatorController implements Serializable {
         } catch (Exception e) {
             Methods.showMessage("Fatal", "Application Failed!",
                     "An unrecognised error has occurred!.");
-            return new CustomComparatorResponse();
+            response = new CustomComparatorResponse();
+            return "/metrics/demo?faces-redirect=true";
         }
-        return response;
+        return "/charts/ChartTable.xhtml?faces-redirect=true";
+    }
+
+    private Map<String, List<String>> getPayoadFromInput() {
+        List<String> metricList = new ArrayList<>(Arrays.asList(selectedMetrics));
+        List<String> countryList = new ArrayList<>(Arrays.asList(countryListStr.replace(" ", "").split(",")));
+
+        Map<String, List<String>> payload = new HashMap<>();
+        payload.put("countryList", countryList);
+        payload.put("metricsList", metricList);
+
+        return payload;
+    }
+
+    public String cancel() {
+        return "/metrics/Visualize?faces-redirect=true";
     }
 
     public static APICallHandler getApiCallHandler() {
@@ -59,19 +104,27 @@ public class CustomComparatorController implements Serializable {
         this.response = response;
     }
 
-    public List<String> getMetricList() {
-        return metricList;
+    public List<SelectItem> getMetrics() {
+        return metrics;
     }
 
-    public void setMetricList(List<String> metricList) {
-        this.metricList = metricList;
+    public void setMetrics(List<SelectItem> metrics) {
+        this.metrics = metrics;
     }
 
-    public List<String> getCountryList() {
-        return countryList;
+    public String[] getSelectedMetrics() {
+        return selectedMetrics;
     }
 
-    public void setCountryList(List<String> countryList) {
-        this.countryList = countryList;
+    public void setSelectedMetrics(String[] selectedMetrics) {
+        this.selectedMetrics = selectedMetrics;
+    }
+
+    public String getCountryListStr() {
+        return countryListStr;
+    }
+
+    public void setCountryListStr(String countryListStr) {
+        this.countryListStr = countryListStr;
     }
 }

@@ -125,4 +125,20 @@ public class MetricsController implements Serializable {
     public void setMetricResponse(MetricResponse metricResponse) {
         this.metricResponse = metricResponse;
     }
+
+    public static APICallHandler getApiCallHandler() {
+        return apiCallHandler;
+    }
+
+    public static void setApiCallHandler(APICallHandler apiCallHandler) {
+        MetricsController.apiCallHandler = apiCallHandler;
+    }
+
+    public CountryViewResponse getCountryViewResponse() {
+        return countryViewResponse;
+    }
+
+    public void setCountryViewResponse(CountryViewResponse countryViewResponse) {
+        this.countryViewResponse = countryViewResponse;
+    }
 }
