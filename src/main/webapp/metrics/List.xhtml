@@ -27,9 +27,11 @@
         </f:metadata>
         <div align="center" style="text-align: center;">
             <h:form id="MetricsForm">
-                <p:panel header="#{metricsController.metricName}">
+                <p:panel header="#{metricsController.metricRows.metricName}">
+                    <p>#{metricsController.metricRows.metricDetail}</p>
+                    <p>Source: #{metricsController.metricRows.metricSource}</p>
                     <p:dataTable id="datalist"
-                                 value="#{metricsController.metricRows}"
+                                 value="#{metricsController.metricRows.countryData}"
                                  var="aMetric"
                                  widgetVar="metricDataTable"
                                  selectionMode="single"
@@ -66,9 +68,9 @@
                             <h:outputText value="#{aMetric.countryName}"/>
                         </p:column>
 
-                        <p:column headerText="Value" sortBy="#{aMetric.metricValue}"
+                        <p:column headerText="Value" sortBy="#{aMetric.value}"
                                   style="vertical-align: top;text-align: center">
-                            <h:outputText value="#{aMetric.metricValue}">
+                            <h:outputText value="#{aMetric.value}">
                                 <f:convertNumber type="number" groupingUsed="true"/>
                             </h:outputText>
                         </p:column>
@@ -92,7 +94,7 @@
                                                  update=":MetricViewDlg" oncomplete="PF('MetricViewDialog').show()"
                                                  disabled="#{empty metricsController.selected}"/>
                                 &nbsp;
-                                <p:commandButton id="visualizeButton" value="Visualize" icon="fa-chart-line" styleClass="rounded-button"
+                                <p:commandButton id="visualizeButton" value="Visualize" icon="fa fa-chart-line" styleClass="rounded-button"
                                                  action="#{graphController.showGraph}" />
                             </div>
                         </f:facet>

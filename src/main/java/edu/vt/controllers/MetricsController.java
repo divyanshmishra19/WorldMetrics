@@ -1,13 +1,12 @@
 package edu.vt.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.vt.entityBeans.Metric;
+import edu.vt.entityBeans.CountryData;
 import edu.vt.entityBeans.MetricPayload;
+import edu.vt.entityBeans.MetricResponse;
 import edu.vt.globals.Constants;
 import edu.vt.globals.Methods;
 
-import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.net.URI;
@@ -19,11 +18,10 @@ import java.util.*;
 @Named("metricsController")
 @SessionScoped
 public class MetricsController implements Serializable{
-    private List<Metric> metricRows;
-    private Metric selected;
+    private List<CountryData> metricRows;
+    private CountryData selected;
     private String metricCode;
-    private MetricPayload payload;
-    private String metricName;
+    private MetricResponse metricResponse;
 
     public String setMetric(int a)
     {
@@ -39,13 +37,12 @@ public class MetricsController implements Serializable{
         return "/metrics/List?faces-redirect=true";
     }
 
-    public List<Metric> getMetricRows() {
-        payload = new MetricPayload(new ArrayList<String>(), new ArrayList<String>(), metricCode);
+    public MetricResponse getMetricRows() {
 
         ObjectMapper Obj = new ObjectMapper();
         /*
         try {
-            String jsonStr = Obj.writeValueAsString(payload);
+            String jsonStr = Obj.writeValueAsString(metricCode);
 
             String TARGET = "KUNALS_SERVER_URL";
             URI uri = new URI(TARGET);
@@ -63,74 +60,50 @@ public class MetricsController implements Serializable{
             {
                 Methods.showMessage("Fatal", "Application Failed!",
                         "An unrecognised error has occurred!.");
-                return Collections.emptyList();
+                return new MetricResponse();
             }
 
-            Map<String, Map<String, Map<String, Object>>> result = new ObjectMapper().readValue(responseString, HashMap.class);
-            selected.setMetricValue(123.45);
-            selected.setCountryName("India");
-            selected.setYear("1987");
+            metricResponse = new ObjectMapper().readValue(responseString, MetricResponse.class);
+            metricRows = metricResponse.getCountryData();
 
         } catch (Exception e) {
             Methods.showMessage("Fatal", "Application Failed!",
                     "An unrecognised error has occurred!.");
-            return Collections.emptyList();
+            return new MetricResponse();
         }
-
          */
-        selected = new Metric();
-        selected.setMetricValue(123.45);
-        selected.setCountryName("India");
-        selected.setYear("1987");
-        metricRows = new ArrayList<>();
-        metricRows.add(selected);
+        CountryData countryData = new CountryData();
+        countryData.setCountryName("TEST");
+        countryData.setChartURL("TEST");
+        countryData.setDetail("TEST");
+        countryData.setValue(34.5);
+        countryData.setYear(2009);
 
-        selected = new Metric();
-        selected.setMetricValue(456.78);
-        selected.setCountryName("USA");
-        selected.setYear("2021");
-        metricRows.add(selected);
+        List<CountryData> countryDataList = new ArrayList<>();
 
-        selected = new Metric();
-        selected.setMetricValue(234.98);
-        selected.setCountryName("Russia");
-        selected.setYear("2002");
-        metricRows.add(selected);
+        countryDataList.add(countryData);
+        metricResponse = new MetricResponse();
+        metricResponse.setCountryData(countryDataList);
+        metricResponse.setMetricName("TEST");
+        metricResponse.setMetricSource("fake source");
+        metricResponse.setMetricDetail("TESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETS");
 
-        selected = new Metric();
-        selected.setMetricValue(6.78);
-        selected.setCountryName("Japan");
-        selected.setYear("2015");
-        metricRows.add(selected);
-
-        selected = new Metric();
-        selected.setMetricValue(46.7);
-        selected.setCountryName("China");
-        selected.setYear("2013");
-        metricRows.add(selected);
-
-        selected = new Metric();
-        selected.setMetricValue(4578.0);
-        selected.setCountryName("Egypt");
-        selected.setYear("2012");
-        metricRows.add(selected);
-
-        return metricRows;
+        return metricResponse;
     }
 
     public void unselect() {
         selected = null;
     }
 
-    public void setMetricRows(List<Metric> metricRows) {
+    public void setMetricRows(List<CountryData> metricRows) {
         this.metricRows = metricRows;
     }
 
-    public Metric getSelected() {
+    public CountryData getSelected() {
         return selected;
     }
 
-    public void setSelected(Metric selected) {
+    public void setSelected(CountryData selected) {
         this.selected = selected;
     }
 
@@ -142,19 +115,15 @@ public class MetricsController implements Serializable{
         this.metricCode = metricCode;
     }
 
-    public MetricPayload getPayload() {
-        return payload;
+    public MetricResponse getMetricResponse() {
+        metricResponse = new MetricResponse();
+        metricResponse.setMetricName("TEST");
+        metricResponse.setMetricSource("fake source");
+        metricResponse.setMetricDetail("TESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETS");
+        return metricResponse;
     }
 
-    public void setPayload(MetricPayload payload) {
-        this.payload = payload;
-    }
-
-    public String getMetricName() {
-        return "GDP";
-    }
-
-    public void setMetricName(String metricName) {
-        this.metricName = metricName;
+    public void setMetricResponse(MetricResponse metricResponse) {
+        this.metricResponse = metricResponse;
     }
 }
