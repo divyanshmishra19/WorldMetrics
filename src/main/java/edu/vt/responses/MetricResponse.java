@@ -1,4 +1,6 @@
-package edu.vt.entityBeans;
+package edu.vt.responses;
+
+import edu.vt.entities.CountryData;
 
 import java.util.List;
 

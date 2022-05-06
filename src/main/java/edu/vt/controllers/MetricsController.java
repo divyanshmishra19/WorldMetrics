@@ -1,33 +1,62 @@
 package edu.vt.controllers;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.vt.entityBeans.CountryData;
-import edu.vt.entityBeans.MetricPayload;
-import edu.vt.entityBeans.MetricResponse;
+import edu.vt.entities.CountryData;
+import edu.vt.responses.CountryViewResponse;
+import edu.vt.responses.MetricResponse;
+import edu.vt.globals.APICallHandler;
 import edu.vt.globals.Constants;
 import edu.vt.globals.Methods;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.*;
 
 @Named("metricsController")
 @SessionScoped
-public class MetricsController implements Serializable{
+public class MetricsController implements Serializable {
+
+    private static APICallHandler apiCallHandler;
+
     private List<CountryData> metricRows;
     private CountryData selected;
     private String metricCode;
     private MetricResponse metricResponse;
+    private CountryViewResponse countryViewResponse;
 
-    public String setMetric(int a)
-    {
-        switch (a)
-        {
+
+    static {
+        apiCallHandler = new APICallHandler();
+    }
+
+    public String setMetric(int a) {
+        switch (a) {
             case 1:
+                metricCode = Constants.GDP;
+                break;
+            case 2:
+                metricCode = Constants.GDP;
+                break;
+            case 3:
+                metricCode = Constants.GDP;
+                break;
+            case 4:
+                metricCode = Constants.GDP;
+                break;
+            case 5:
+                metricCode = Constants.GDP;
+                break;
+            case 6:
+                metricCode = Constants.GDP;
+                break;
+            case 7:
+                metricCode = Constants.GDP;
+                break;
+            case 8:
+                metricCode = Constants.GDP;
+                break;
+            case 9:
                 metricCode = Constants.GDP;
                 break;
             default:
@@ -38,57 +67,31 @@ public class MetricsController implements Serializable{
     }
 
     public MetricResponse getMetricRows() {
-
-        ObjectMapper Obj = new ObjectMapper();
-        /*
         try {
-            String jsonStr = Obj.writeValueAsString(metricCode);
-
-            String TARGET = "KUNALS_SERVER_URL";
-            URI uri = new URI(TARGET);
-            HttpRequest request = HttpRequest.newBuilder(uri)
-                    .header("Content-Type", "application/json")
-                    .POST(HttpRequest.BodyPublishers.ofString(jsonStr))
-                    .build();
-
-            HttpResponse<String> response = HttpClient.newHttpClient()
-                    .send(request, HttpResponse.BodyHandlers.ofString());
-
-            String responseString = response.body();
-
-            if(responseString.contains("error") && responseString.contains("low_quality"))
-            {
-                Methods.showMessage("Fatal", "Application Failed!",
-                        "An unrecognised error has occurred!.");
-                return new MetricResponse();
-            }
-
+            String responseString = apiCallHandler.getResponseFromServer(Constants.GET_METRICS, metricCode);
             metricResponse = new ObjectMapper().readValue(responseString, MetricResponse.class);
-            metricRows = metricResponse.getCountryData();
-
         } catch (Exception e) {
             Methods.showMessage("Fatal", "Application Failed!",
                     "An unrecognised error has occurred!.");
             return new MetricResponse();
         }
-         */
-        CountryData countryData = new CountryData();
-        countryData.setCountryName("TEST");
-        countryData.setChartURL("TEST");
-        countryData.setDetail("TEST");
-        countryData.setValue(34.5);
-        countryData.setYear(2009);
-
-        List<CountryData> countryDataList = new ArrayList<>();
-
-        countryDataList.add(countryData);
-        metricResponse = new MetricResponse();
-        metricResponse.setCountryData(countryDataList);
-        metricResponse.setMetricName("TEST");
-        metricResponse.setMetricSource("fake source");
-        metricResponse.setMetricDetail("TESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETS");
-
         return metricResponse;
+    }
+
+    public CountryViewResponse viewCountry() {
+        Map<String, String> viewCountryPayLoad = new HashMap<>();
+        viewCountryPayLoad.put("countryName", selected.getCountryName());
+        viewCountryPayLoad.put("metricCode", metricCode);
+
+        try {
+            String responseString = apiCallHandler.getResponseFromServer(Constants.VIEW_COUNTRY, viewCountryPayLoad);
+            countryViewResponse = new ObjectMapper().readValue(responseString, CountryViewResponse.class);
+        } catch (Exception e) {
+            Methods.showMessage("Fatal", "Application Failed!",
+                    "An unrecognised error has occurred!.");
+            return new CountryViewResponse();
+        }
+        return countryViewResponse;
     }
 
     public void unselect() {
@@ -116,10 +119,6 @@ public class MetricsController implements Serializable{
     }
 
     public MetricResponse getMetricResponse() {
-        metricResponse = new MetricResponse();
-        metricResponse.setMetricName("TEST");
-        metricResponse.setMetricSource("fake source");
-        metricResponse.setMetricDetail("TESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETSTESTETS");
         return metricResponse;
     }
 
