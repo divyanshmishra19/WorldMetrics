@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template/siteTemplate.xhtml">
+    <ui:define name="title">
+        <!-- Set the page title -->
+        <h:outputText value="Custom Comparator"/>
+
+    </ui:define>
+    <ui:define name="editableContent">
+        <div class="center">
+            <p style="color: white; text-align: left">This quiz has been designed to get an idea of what you think about different development metrics,
+                the way you perceieve different avenues of development and the role they play in a country's future, as well as,
+                how different development metrics interplay to provide a more general idea of development.</p>
+
+            <p style="color: white; text-align: left">To see where different countries lie, based on your idea of development, take this quiz and press
+                the submit button. Start by typing the names of upto five countries in a comma separated form (ensuring correct spelling and full names
+                for best results) for which you want to see comparison based on your custom etric.The data from this quiz is anonyized and used to analyse
+                how different outlooks of development focus on different metrics. We also present to you, what your peers think of development, anonymized,
+                of course.</p>
+        </div>
+        <div class="center">
+            <h:form id="CustomMetricsForm" style="color: white;" class="ui-datatable-data">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" style="width: 100%"
+                                 columnClasses="fifty-percent top-alignment, fifty-percent top-alignment">
+
+                        <h:outputLabel for="Countries" value="Enter Country Names"/>
+                        <p:inputTextarea id="Countries" placeholder="Search"
+                                         value="#{customMetricController.countryListStr}"/>
+
+                        <h:outputText for="q1" style="word-wrap: break-word; text-wrap: normal"
+                                      value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                                       alteration in some form, by injected humour, or randomised words which don't look even slightly believable"/>
+                        <p:selectOneRadio id="q1" value="#{customMetricController.answer1}" layout="grid" columns="3"
+                                          styleClass="grid-radio">
+                            <f:selectItems value="#{customMetricController.quizAnswers}" var="answer1"
+                                           itemLabel="#{answer1}" itemValue="#{answer1}"/>
+                        </p:selectOneRadio>
+
+                        <h:outputText for="q2" style="word-wrap: break-word; text-wrap: normal"
+                                      value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                                       alteration in some form, by injected humour, or randomised words which don't look even slightly believable"/>
+                        <p:selectOneRadio id="q2" value="#{customMetricController.answer2}" layout="grid" columns="3"
+                                          styleClass="grid-radio">
+                            <f:selectItems value="#{customMetricController.quizAnswers}" var="answer2"
+                                           itemLabel="#{answer2}" itemValue="#{answer2}"/>
+                        </p:selectOneRadio>
+
+                        <h:outputText for="q3" style="word-wrap: break-word; text-wrap: normal"
+                                      value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                                       alteration in some form, by injected humour, or randomised words which don't look even slightly believable"/>
+                        <p:selectOneRadio id="q3" value="#{customMetricController.answer3}" layout="grid" columns="3"
+                                          styleClass="grid-radio">
+                            <f:selectItems value="#{customMetricController.quizAnswers}" var="answer3"
+                                           itemLabel="#{answer3}" itemValue="#{answer3}"/>
+                        </p:selectOneRadio>
+
+                        <h:outputText for="q4" style="word-wrap: break-word; text-wrap: normal"
+                                      value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                                       alteration in some form, by injected humour, or randomised words which don't look even slightly believable"/>
+                        <p:selectOneRadio id="q4" value="#{customMetricController.answer4}" layout="grid" columns="3"
+                                          styleClass="grid-radio">
+                            <f:selectItems value="#{customMetricController.quizAnswers}" var="answer4"
+                                           itemLabel="#{answer4}" itemValue="#{answer4}"/>
+                        </p:selectOneRadio>
+
+                        <h:outputText for="q5" style="word-wrap: break-word; text-wrap: normal"
+                                      value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                                       alteration in some form, by injected humour, or randomised words which don't look even slightly believable"/>
+                        <p:selectOneRadio id="q5" value="#{customMetricController.answer5}" layout="grid" columns="3"
+                                          styleClass="grid-radio">
+                            <f:selectItems value="#{customMetricController.quizAnswers}" var="answer5"
+                                           itemLabel="#{answer5}" itemValue="#{answer5}"/>
+                        </p:selectOneRadio>
+
+                        <h:outputText for="q6" style="word-wrap: break-word; text-wrap: normal"
+                                      value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                                       alteration in some form, by injected humour, or randomised words which don't look even slightly believable"/>
+                        <p:selectOneRadio id="q6" value="#{customMetricController.answer6}" layout="grid" columns="3"
+                                          styleClass="grid-radio">
+                            <f:selectItems value="#{customMetricController.quizAnswers}" var="answer"
+                                           itemLabel="#{answer6}" itemValue="#{answer6}"/>
+                        </p:selectOneRadio>
+
+                        <h:outputText for="q7" style="word-wrap: break-word; text-wrap: normal"
+                                      value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                                       alteration in some form, by injected humour, or randomised words which don't look even slightly believable"/>
+                        <p:selectOneRadio id="q7" value="#{customMetricController.answer7}" layout="grid" columns="3"
+                                          styleClass="grid-radio">
+                            <f:selectItems value="#{customMetricController.quizAnswers}" var="answer7"
+                                           itemLabel="#{answer7}" itemValue="#{answer7}"/>
+                        </p:selectOneRadio>
+
+                        <h:outputText for="q8" style="word-wrap: break-word; text-wrap: normal"
+                                      value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                                       alteration in some form, by injected humour, or randomised words which don't look even slightly believable"/>
+                        <p:selectOneRadio id="q8" value="#{customMetricController.answer8}" layout="grid" columns="3"
+                                          styleClass="grid-radio">
+                            <f:selectItems value="#{customMetricController.quizAnswers}" var="answer8"
+                                           itemLabel="#{answer8}" itemValue="#{answer8}"/>
+                        </p:selectOneRadio>
+
+                        <h:outputText for="q9" style="word-wrap: break-word; text-wrap: normal"
+                                      value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                                       alteration in some form, by injected humour, or randomised words which don't look even slightly believable"/>
+                        <p:selectOneRadio id="q9" value="#{customMetricController.answer9}" layout="grid" columns="3"
+                                          styleClass="grid-radio">
+                            <f:selectItems value="#{customMetricController.quizAnswers}" var="answer9"
+                                           itemLabel="#{answer9}" itemValue="#{answer9}"/>
+                        </p:selectOneRadio>
+
+                        <h:outputText for="q10" style="word-wrap: break-word; text-wrap: normal"
+                                      value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                                       alteration in some form, by injected humour, or randomised words which don't look even slightly believable"/>
+                        <p:selectOneRadio id="q10" value="#{customMetricController.answer10}" layout="grid" columns="3"
+                                          styleClass="grid-radio">
+                            <f:selectItems value="#{customMetricController.quizAnswers}" var="answer10"
+                                           itemLabel="#{answer10}" itemValue="#{answer10}"/>
+                        </p:selectOneRadio>
+
+                    </p:panelGrid>
+                </h:panelGroup>
+
+                <h:panelGroup>
+                    <br/><br/>
+                    <div align="center">
+                        <p:commandButton value="Submit" icon="fas fa-save" styleClass="ui-button-outlined"
+                                         ajax="false" action="#{customMetricController.getCustomMetricsCharts()}"
+                                         update="display,:CustomMetricsForm:datalist,:growlInfoMessage,:growlWarningMessage,:growlErrorMessage,:growlFatalMessage"/>
+                        &nbsp;
+                        <p:commandButton value="Cancel" icon="fas fa-ban" styleClass="ui-button-outlined"
+                                         action="#{customMetricController.cancel()}" ajax="false" immediate="true"/>
+                    </div>
+                </h:panelGroup>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

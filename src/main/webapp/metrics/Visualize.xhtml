@@ -15,11 +15,11 @@
     </ui:define>
     <ui:define name="editableContent">
         <div class="center">
-            <p style="color: white">This page has been designed to allow for comparison of upto five countries across different available
+            <p style="color: white;text-align: left">This page has been designed to allow for comparison of upto five countries across different available
                 metrics. The goal of these comparisons is to engage users in the tension that exists between the ideas of
                 global development, the message conveyed by a comparative analysis of these metrics, and the ground truth.</p>
 
-            <p style="color: white">To perform comparative analysis, please type the names of upto five countries in a comma separated form
+            <p style="color: white;text-align: left">To perform comparative analysis, please type the names of upto five countries in a comma separated form
                 (ensuring correct spelling and full names for best results) and then select from the provided metric
                 checkboxes. Upon having finalised your selection, please press the visualise button to see charts and graphs
                 for a comparative analysis.</p>
@@ -29,7 +29,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" columnClasses="panelGridColumn1, panelGridColumn2">
                         <h:outputLabel for="Countries" value="Enter Country Names"/>
-                        <p:inputTextarea id="Countries" placeholder="Search" rows="2" cols="150" value="#{customComparatorController.countryList}"/>
+                        <p:inputTextarea id="Countries" placeholder="Search" rows="2" cols="150" value="#{customComparatorController.countryListStr}"/>
 
                         <h:outputLabel for="metricsCheckBox" value="Choose Your Metrics"/>
                         <p:selectManyCheckbox id="metricsCheckBox" value="#{customComparatorController.selectedMetrics}"

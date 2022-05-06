@@ -575,6 +575,22 @@ body .ui-button.ui-button-outlined.ui-state-active, body .ui-button.ui-button-ou
     color: black;
 }
 
+.forty-percent {
+    width: 40%;
+}
+
+.sixty-percent {
+    width: 60%;
+}
+
+.fifty-percent {
+    width: 50%;
+}
+
+.top-alignment {
+    vertical-align: top;
+}
+
 body .ui-paginator .ui-paginator-first, body .ui-paginator .ui-paginator-prev, body .ui-paginator .ui-paginator-next, body .ui-paginator .ui-paginator-last {
     color: #ffffff;
     width: 2.286em;

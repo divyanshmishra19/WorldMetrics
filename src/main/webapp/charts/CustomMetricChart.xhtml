@@ -17,14 +17,14 @@
 <ui:composition template="/template/siteTemplate.xhtml">
     <ui:define name="title">
         <!-- Set the page title -->
-        <h:outputText value="Custom Comparison"/>
+        <h:outputText value="Custom Metric"/>
     </ui:define>
 
     <!-- Create the content for this page below -->
     <ui:define name="editableContent">
         <div align="center">
-            <h:form id="CustomChartsForm">
-                <p:dataView value="#{customComparatorController.response.charts}"
+            <h:form id="CustomMetricsForm">
+                <p:dataView value="#{customMetricController.response.metricCharts}"
                             var="aChart"
                             layout="grid"
                             rows="5"
@@ -33,7 +33,7 @@
                             style="width:100%">
 
                     <f:facet name="header">
-                        <h:outputText value="Your Custom Comparison For Countries"/>
+                        <h:outputText value="Your Custom Metric and Comparison For Countries"/>
                     </f:facet>
 
                     <p:dataViewListItem>
