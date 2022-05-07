@@ -5,6 +5,9 @@ public class CountryViewResponse {
     private String countryDetails;
     private String flagURL;
     private String chartURL;
+    private String metric;
+    private String metricDetail;
+    private String metricSource;
 
     public String getCountryName() {
         return countryName;
@@ -36,5 +39,29 @@ public class CountryViewResponse {
 
     public void setChartURL(String chartURL) {
         this.chartURL = chartURL;
+    }
+
+    public String getMetric() {
+        return metric;
+    }
+
+    public void setMetric(String metric) {
+        this.metric = metric;
+    }
+
+    public String getMetricDetail() {
+        return metricDetail;
+    }
+
+    public void setMetricDetail(String metricDetail) {
+        this.metricDetail = metricDetail;
+    }
+
+    public String getMetricSource() {
+        return metricSource;
+    }
+
+    public void setMetricSource(String metricSource) {
+        this.metricSource = metricSource;
     }
 }

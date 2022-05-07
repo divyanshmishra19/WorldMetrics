@@ -1,24 +1,24 @@
 package edu.vt.entities;
 
 public class MetricChart {
-    private String metricCode;
-    private String url;
+    private String metric;
+    private String chartUrl;
     private String description;
 
-    public String getMetricCode() {
-        return metricCode;
+    public String getMetric() {
+        return metric;
     }
 
-    public void setMetricCode(String metricCode) {
-        this.metricCode = metricCode;
+    public void setMetric(String metric) {
+        this.metric = metric;
     }
 
-    public String getUrl() {
-        return url;
+    public String getChartUrl() {
+        return chartUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setChartUrl(String chartUrl) {
+        this.chartUrl = chartUrl;
     }
 
     public String getDescription() {

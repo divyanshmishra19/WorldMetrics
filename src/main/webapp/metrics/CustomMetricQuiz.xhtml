@@ -31,7 +31,7 @@
                                  columnClasses="fifty-percent top-alignment, fifty-percent top-alignment">
 
                         <h:outputLabel for="Countries" value="Enter Country Names"/>
-                        <p:inputTextarea id="Countries" placeholder="Search"
+                        <p:inputTextarea id="Countries" placeholder="Search" rows="2" cols="75"
                                          value="#{customMetricController.countryListStr}"/>
 
                         <h:outputText for="q1" style="word-wrap: break-word; text-wrap: normal"
@@ -113,15 +113,6 @@
                                           styleClass="grid-radio">
                             <f:selectItems value="#{customMetricController.quizAnswers}" var="answer9"
                                            itemLabel="#{answer9}" itemValue="#{answer9}"/>
-                        </p:selectOneRadio>
-
-                        <h:outputText for="q10" style="word-wrap: break-word; text-wrap: normal"
-                                      value="There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                                       alteration in some form, by injected humour, or randomised words which don't look even slightly believable"/>
-                        <p:selectOneRadio id="q10" value="#{customMetricController.answer10}" layout="grid" columns="3"
-                                          styleClass="grid-radio">
-                            <f:selectItems value="#{customMetricController.quizAnswers}" var="answer10"
-                                           itemLabel="#{answer10}" itemValue="#{answer10}"/>
                         </p:selectOneRadio>
 
                     </p:panelGrid>

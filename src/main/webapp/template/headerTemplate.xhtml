@@ -19,30 +19,31 @@ xmlns:f="http://xmlns.jcp.org/jsf/core">
         -->
         <p:menubar>
             <p:menuitem outcome="/index.html">
-                <img src="#{resource['images:Logo.png']}" style="height:60px; vertical-align: middle" alt="World Metrics Logo"/>
+                <img src="#{resource['images:Logo.png']}" style="height:60px; vertical-align: middle"
+                     alt="World Metrics Logo"/>
             </p:menuitem>
             <p:divider layout="vertical"/>
             <p:submenu label="Economical Metrics">
-                <p:menuitem value="GDP" action="#{metricsController.setMetric(1)}"/>
-                <p:menuitem value="Metric 1" outcome="/metrics/demo.xhtml"/>
-                <p:menuitem value="Metric 2" outcome="/metrics/demo.xhtml"/>
+                <p:menuitem value="Gross Domestic Product" action="#{metricsController.setMetric(1)}"/>
+                <p:menuitem value="Consumer Price Index" action="#{metricsController.setMetric(2)}"/>
+                <p:menuitem value="Poverty Index" action="#{metricsController.setMetric(3)}"/>
             </p:submenu>
-            <p:submenu label="Social Metrics ">
-                <p:menuitem value="Metric 1" outcome="/metrics/demo.xhtml"/>
-                <p:menuitem value="Metric 2" outcome="/metrics/demo.xhtml"/>
-                <p:menuitem value="Metric 3" outcome="/metrics/demo.xhtml"/>
-                <p:menuitem value="Metric 4" outcome="/metrics/demo.xhtml"/>
+            <p:submenu label="Health Metrics ">
+                <p:menuitem value="World Hunger" action="#{metricsController.setMetric(4)}"/>
+                <p:menuitem value="Child Mortality Rates" action="#{metricsController.setMetric(5)}"/>
+                <p:menuitem value="Life Expectancy Rates" action="#{metricsController.setMetric(6)}"/>
             </p:submenu>
-            <p:submenu label="Health Metrics">
-                <p:menuitem value="Metric 1" outcome="/metrics/demo.xhtml"/>
-                <p:menuitem value="Metric 2" outcome="/metrics/demo.xhtml"/>
+            <p:submenu label="Social Metrics">
+                <p:menuitem value="National Population" action="#{metricsController.setMetric(7)}"/>
+                <p:menuitem value="Happiness Index" action="#{metricsController.setMetric(8)}"/>
+                <p:menuitem value="Energy Consumption" action="#{metricsController.setMetric(9)}"/>
             </p:submenu>
-            <p:menuitem value="Custom Metrics" outcome="/metrics/demo.xhtml"/>
+            <p:menuitem value="Custom Metrics" outcome="/metrics/CustomMetricQuiz.xhtml"/>
             <p:menuitem value="Custom Comparator" outcome="/metrics/Visualize.xhtml"/>
-            <p:menuitem value="Resources" outcome="/metrics/demo.xhtml"/>
+            <p:menuitem value="Resources" outcome="/metrics/Resources.xhtml"/>
             <p:divider layout="vertical"/>
             <f:facet name="options">
-                <p:button value="Home" icon = "pi pi-home" outcome="/index.xhtml"/>
+                <p:button value="Home" icon="pi pi-home" outcome="/index.xhtml"/>
             </f:facet>
         </p:menubar>
     </h:form>

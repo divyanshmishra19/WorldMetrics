@@ -36,28 +36,28 @@ public class MetricsController implements Serializable {
                 metricCode = Constants.GDP;
                 break;
             case 2:
-                metricCode = Constants.GDP;
+                metricCode = Constants.CPI;
                 break;
             case 3:
-                metricCode = Constants.GDP;
+                metricCode = Constants.POVERTY;
                 break;
             case 4:
-                metricCode = Constants.GDP;
+                metricCode = Constants.HUNGER;
                 break;
             case 5:
-                metricCode = Constants.GDP;
+                metricCode = Constants.CHILD_MORTALITY;
                 break;
             case 6:
-                metricCode = Constants.GDP;
+                metricCode = Constants.LIFE_EXPECTANCY;
                 break;
             case 7:
-                metricCode = Constants.GDP;
+                metricCode = Constants.POPULATION;
                 break;
             case 8:
-                metricCode = Constants.GDP;
+                metricCode = Constants.HAPPINESS;
                 break;
             case 9:
-                metricCode = Constants.GDP;
+                metricCode = Constants.ENERGY_CONSUMPTION;
                 break;
             default:
                 metricCode = Constants.GDP;
@@ -67,8 +67,10 @@ public class MetricsController implements Serializable {
     }
 
     public MetricResponse getMetricRows() {
+        Map<String, String> getMetricPayload = new HashMap<>();
+        getMetricPayload.put("metric", metricCode);
         try {
-            String responseString = apiCallHandler.getResponseFromServer(Constants.GET_METRICS, metricCode);
+            String responseString = apiCallHandler.getResponseFromServer(Constants.GET_METRICS, getMetricPayload);
             metricResponse = new ObjectMapper().readValue(responseString, MetricResponse.class);
         } catch (Exception e) {
             Methods.showMessage("Fatal", "Application Failed!",
@@ -80,8 +82,8 @@ public class MetricsController implements Serializable {
 
     public CountryViewResponse viewCountry() {
         Map<String, String> viewCountryPayLoad = new HashMap<>();
-        viewCountryPayLoad.put("countryName", selected.getCountryName());
-        viewCountryPayLoad.put("metricCode", metricCode);
+        viewCountryPayLoad.put("country", selected.getCountryName());
+        viewCountryPayLoad.put("metric", metricCode);
 
         try {
             String responseString = apiCallHandler.getResponseFromServer(Constants.VIEW_COUNTRY, viewCountryPayLoad);

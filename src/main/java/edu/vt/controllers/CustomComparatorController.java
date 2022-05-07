@@ -31,22 +31,22 @@ public class CustomComparatorController implements Serializable {
         SelectItemGroup economicMetrics = new SelectItemGroup("Economic Metrics");
         economicMetrics.setSelectItems(new SelectItem[]{
                 new SelectItem("GDP", "GDP"),
-                new SelectItem("Metric1", "Metric1"),
-                new SelectItem("Metric2", "Metric2")
-        });
-
-        SelectItemGroup socialMetrics = new SelectItemGroup("Social Metrics");
-        socialMetrics.setSelectItems(new SelectItem[]{
-                new SelectItem("Metric3", "Metric3"),
-                new SelectItem("Metric4", "Metric4"),
-                new SelectItem("Metric5", "Metric5")
+                new SelectItem("CPI", "CPI"),
+                new SelectItem("POVERTY", "Poverty Index")
         });
 
         SelectItemGroup healthMetrics = new SelectItemGroup("Health Metrics");
         healthMetrics.setSelectItems(new SelectItem[]{
-                new SelectItem("Metric7", "Metric7"),
-                new SelectItem("Metric8", "Metric8"),
-                new SelectItem("Metric9", "Metric9")
+                new SelectItem("HUNGER", "Hunger Rate"),
+                new SelectItem("CHILD_MORTALITY", "Child Mortality"),
+                new SelectItem("LIFE_EXPECTANCY", "Life Expectancy")
+        });
+
+        SelectItemGroup socialMetrics = new SelectItemGroup("Social Metrics");
+        socialMetrics.setSelectItems(new SelectItem[]{
+                new SelectItem("POPULATION", "Population Rate"),
+                new SelectItem("HAPPINESS", "Happiness Index"),
+                new SelectItem("ENERGY_CONSUMPTION", "Energy Consumption Rate")
         });
 
         metrics.add(economicMetrics);
@@ -79,9 +79,14 @@ public class CustomComparatorController implements Serializable {
 
         Map<String, List<String>> payload = new HashMap<>();
         payload.put("countryList", countryList);
-        payload.put("metricsList", metricList);
+        payload.put("metricList", metricList);
 
         return payload;
+    }
+
+    public String showGraph()
+    {
+        return "/metrics/Visualize?faces-redirect=true";
     }
 
     public String cancel() {

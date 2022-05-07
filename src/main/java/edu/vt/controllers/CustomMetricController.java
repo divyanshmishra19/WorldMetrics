@@ -16,12 +16,11 @@ import java.util.*;
 @SessionScoped
 public class CustomMetricController implements Serializable {
     private static APICallHandler apiCallHandler;
-    private static final List<String> METRIC_CODE_LIST = List.of("a", "b", "c");
 
     private CustomMetricResponse response;
     private List<String> quizAnswers;
     private String countryListStr;
-    private String answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10;
+    private String answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9;
 
 
     static {
@@ -54,20 +53,20 @@ public class CustomMetricController implements Serializable {
 
     private Map<String, Object> getPayoadFromInput() {
         Map<String, Object> payload = new HashMap<>();
-        List<String> answers = List.of(answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10);
+        List<String> answers = List.of(answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9);
         List<String> countryList = new ArrayList<>(Arrays.asList(countryListStr.replace(" ", "").split(",")));
 
         Map<String, Object> quizScore;
         List<Object> quizValues = new ArrayList<>();
-        for(int i=0;i<10;i++)
+        for(int i=0;i<9;i++)
         {
             quizScore = new HashMap<>();
-            quizScore.put("metric", METRIC_CODE_LIST.get(i));
+            quizScore.put("metric", Constants.METRIC_CODE_LIST[i]);
             quizScore.put("value", getScore(answers.get(i)));
             quizValues.add(quizScore);
         }
         payload.put("countryList", countryList);
-        payload.put("quizValues", quizValues);
+        payload.put("quizValue", quizValues);
         return payload;
     }
 
@@ -185,14 +184,6 @@ public class CustomMetricController implements Serializable {
 
     public void setAnswer9(String answer9) {
         this.answer9 = answer9;
-    }
-
-    public String getAnswer10() {
-        return answer10;
-    }
-
-    public void setAnswer10(String answer10) {
-        this.answer10 = answer10;
     }
 
     public String getCountryListStr() {

@@ -40,7 +40,7 @@
                                  reflow="true"
                                  showGridlines="true"
                                  paginator="true"
-                                 rowKey="#{metricController.id}"
+                                 rowKey="#{aMetric.id}"
                                  rows="5"
                                  rowsPerPageTemplate="5,10,20,30,50,70,90"
                                  emptyMessage="No data found for the search query entered!">
@@ -94,12 +94,13 @@
                                 <!-- VIEW button: id is used since it is referenced to be activated or deactivated -->
                                 <p:commandButton id="viewButton" value="View" icon="fas fa-eye"
                                                  styleClass="rounded-button" action="#{metricsController.viewCountry}"
+                                                 disabled="#{empty metricsController.selected}"
                                                  update=":MetricViewDlg" oncomplete="PF('MetricViewDialog').show()"
                                 />
                                 &nbsp;
                                 <p:commandButton id="visualizeButton" value="Visualize" icon="fa fa-chart-line"
                                                  styleClass="rounded-button"
-                                                 action="#{graphController.showGraph}"/>
+                                                 action="#{customComparatorController.showGraph}"/>
                             </div>
                         </f:facet>
                     </p:dataTable>

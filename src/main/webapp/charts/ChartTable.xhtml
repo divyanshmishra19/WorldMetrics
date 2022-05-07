@@ -24,9 +24,8 @@
     <ui:define name="editableContent">
         <div align="center">
             <h:form id="CustomChartsForm">
-                <p:dataView value="#{customComparatorController.response.charts}"
+                <p:dataView value="#{customComparatorController.response.data}"
                             var="aChart"
-                            layout="grid"
                             rows="5"
                             paginator="false"
                             listIcon="pi pi-bars"
@@ -37,16 +36,16 @@
                     </f:facet>
 
                     <p:dataViewListItem>
-                        <div align="center" style="width: 50%">
+                        <div align="center" style="width: 100%">
                             <!-- The p:panel defines a data list cell displaying aSearchedRecipe data -->
                             <p:panel style="text-align:left">
 
                                 <h:panelGrid columns="2" style="width:100%"
                                              columnClasses="columnChartPhoto, columnChartDescription">
-                                    <p:graphicImage url="#{aChart.url}" width="92px" style="float:left"/>
+                                    <p:graphicImage url="#{aChart.chartUrl}" width="600px" style="float:left"/>
 
                                     <h:panelGrid style="width:100%; margin-left:10px">
-                                        <h:outputText value="#{aChart.description}" style="font-size: 18px"/>
+                                        <h:outputText value="#{aChart.description}" style="font-size: 14px"/>
                                     </h:panelGrid>
 
 
