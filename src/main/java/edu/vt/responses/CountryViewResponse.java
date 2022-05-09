@@ -2,7 +2,7 @@ package edu.vt.responses;
 
 public class CountryViewResponse {
     private String countryName;
-    private String countryDetails;
+    private String countryDetail;
     private String flagURL;
     private String chartURL;
     private String metric;
@@ -17,12 +17,12 @@ public class CountryViewResponse {
         this.countryName = countryName;
     }
 
-    public String getCountryDetails() {
-        return countryDetails;
+    public String getCountryDetail() {
+        return countryDetail;
     }
 
-    public void setCountryDetails(String countryDetails) {
-        this.countryDetails = countryDetails;
+    public void setCountryDetail(String countryDetail) {
+        this.countryDetail = countryDetail;
     }
 
     public String getFlagURL() {

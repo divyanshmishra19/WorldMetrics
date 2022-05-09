@@ -56,31 +56,25 @@ public class CustomMetricController implements Serializable {
         List<String> answers = List.of(answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9);
         List<String> countryList = new ArrayList<>(Arrays.asList(countryListStr.replace(" ", "").split(",")));
 
-        Map<String, Object> quizScore;
-        List<Object> quizValues = new ArrayList<>();
-        for(int i=0;i<9;i++)
-        {
-            quizScore = new HashMap<>();
-            quizScore.put("metric", Constants.METRIC_CODE_LIST[i]);
-            quizScore.put("value", getScore(answers.get(i)));
-            quizValues.add(quizScore);
-        }
+        Map<String, Integer> quizValues = new HashMap<>();
+        for (int i = 0; i < 9; i++)
+            quizValues.put(Constants.METRIC_CODE_LIST[i], getScore(answers.get(i)));
+
         payload.put("countryList", countryList);
         payload.put("quizValue", quizValues);
         return payload;
     }
 
-    private Integer getScore(String s)
-    {
-        if(s.equals("Disagree"))
+    private Integer getScore(String s) {
+        if (s.equals("Disagree"))
             return 1;
-        else if(s.equals("Slightly Disagree"))
+        else if (s.equals("Slightly Disagree"))
             return 2;
-        else if(s.equals("Neither Agree Nor Disagree"))
+        else if (s.equals("Neither Agree Nor Disagree"))
             return 3;
-        else if(s.equals("Slightly Agree"))
+        else if (s.equals("Slightly Agree"))
             return 4;
-        else if(s.equals("Agree"))
+        else if (s.equals("Agree"))
             return 5;
         else
             return 0;
