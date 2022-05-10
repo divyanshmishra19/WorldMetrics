@@ -3,8 +3,8 @@ package edu.vt.responses;
 public class CountryViewResponse {
     private String countryName;
     private String countryDetail;
-    private String flagURL;
-    private String chartURL;
+    private String flagUrl;
+    private String chartUrl;
     private String metric;
     private String metricDetail;
     private String metricSource;
@@ -25,20 +25,20 @@ public class CountryViewResponse {
         this.countryDetail = countryDetail;
     }
 
-    public String getFlagURL() {
-        return flagURL;
+    public String getFlagUrl() {
+        return flagUrl;
     }
 
-    public void setFlagURL(String flagURL) {
-        this.flagURL = flagURL;
+    public void setFlagUrl(String flagUrl) {
+        this.flagUrl = flagUrl;
     }
 
-    public String getChartURL() {
-        return chartURL;
+    public String getChartUrl() {
+        return chartUrl;
     }
 
-    public void setChartURL(String chartURL) {
-        this.chartURL = chartURL;
+    public void setChartUrl(String chartUrl) {
+        this.chartUrl = chartUrl;
     }
 
     public String getMetric() {
